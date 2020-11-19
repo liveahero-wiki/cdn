@@ -1,5 +1,3 @@
-![download-and-extract](https://github.com/liveahero-community/archives/workflows/download-and-extract/badge.svg)
-
 ---
 
 * All Artifacts (ignored sensitive data): https://github.com/liveahero-community/archives/tree/artifacts
