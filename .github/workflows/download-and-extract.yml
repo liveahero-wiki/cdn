@@ -115,18 +115,18 @@ jobs:
           git commit -m "Auto-extract assets to artifacts"
           git push origin HEAD
 
-      #- name: Commit asset list info
-      #  if: env.BUNDLE_COUNT != '0'
-      #  run: |
-      #    $cmdOutput = (git status --porcelain --untracked-files=no) | Out-String
-      #    if ($cmdOutput.length -gt 8) {
-      #      Write-Output "Asset list is updated."
-      #      git config --global user.name ${env:USER_NAME}
-      #      git config --global user.email ${env:USER_EMAIL}
-      #      git add version
-      #      git commit -m "Auto-update asset list"
-      #      git push origin HEAD
-      #      Write-Output "🤘 update version complete."
-      #    } else {
-      #      Write-Output "Assets are already up to date."
-      #    }
+      - name: Commit asset list info
+        if: env.BUNDLE_COUNT != '0'
+        run: |
+          $cmdOutput = (git status --porcelain --untracked-files=no) | Out-String
+          if ($cmdOutput.length -gt 8) {
+            Write-Output "Asset list is updated."
+            git config --global user.name ${env:USER_NAME}
+            git config --global user.email ${env:USER_EMAIL}
+            git add version
+            git commit -m "Auto-update asset list"
+            git push origin HEAD
+            Write-Output "🤘 update version complete."
+          } else {
+            Write-Output "Assets are already up to date."
+          }
