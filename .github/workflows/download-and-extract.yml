@@ -14,7 +14,7 @@ jobs:
       BUNDLES_DIR: bundles
       ARTIFACTS_DIR: artifacts
       FINISH_INDICATOR: done
-      ARTIFACTS_BRANCH: artifacts
+      ARTIFACTS_BRANCH: gh-pages
     runs-on: windows-2019
     strategy:
       matrix:
