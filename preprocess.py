@@ -1,6 +1,7 @@
 import os.path
 import json
 import re
+from PIL import Image
 
 def dumpJson(filename, obj, **kwargs):
   with open(filename, "w", encoding="utf-8", newline="\n") as f:
@@ -60,7 +61,16 @@ class Book:
 
     dumpJson(f, result)
 
+def processMinify(f):
+  print("minify:", f)
+  im = Image.open(f)
+  bg = Image.new("RGBA", im.size, (250, 250, 250, 255))
+  bg.paste(im, (0, 0), im)
+  bg.convert("RGB").save(f.replace(".png", ".jpg"), optimize=True)
+
 if __name__ == '__main__':
   forAllCwd("MonoBehaviour", re.compile(r"fg_(\w+)\.json"), processAtlasJson)
   forAllCwd("MonoBehaviour", re.compile(r"\w+\.book\.json"), Book("book:", "importGridList"))
   forAllCwd("MonoBehaviour", re.compile(r"\w+\.chapter\.json"), Book("chapter:", "settingList"))
+
+  forAllCwd("Sprite", re.compile(r"^banner_\w+\.png"), processMinify)

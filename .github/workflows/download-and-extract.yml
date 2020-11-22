@@ -66,6 +66,7 @@ jobs:
         if: env.BUNDLE_COUNT != '0'
         working-directory: ${{ env.ARTIFACTS_DIR }}
         run: |
+          python -m pip install Pillow
           python ..\preprocess.py
 
       - uses: actions/checkout@v2
@@ -89,7 +90,7 @@ jobs:
           git add Sprite\item_*.png
           git add Sprite\b_skill*.png
           git add Sprite\status_*.png
-          #git add Sprite\banner_*.png
+          git add Sprite\banner_*.jpg
 
           git commit -m "Auto-extract assets to artifacts"
           git push origin HEAD
