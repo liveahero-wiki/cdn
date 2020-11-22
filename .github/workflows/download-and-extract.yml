@@ -41,6 +41,12 @@ jobs:
           Write-Output "BUNDLE_COUNT: ${env:BUNDLE_COUNT}"
           echo "BUNDLE_COUNT=${env:BUNDLE_COUNT}" >> ${env:GITHUB_ENV}
 
+      - uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          repo: "liveahero-wiki/cdn"
+          version: "latest"
+          file: "AssetStudio.zip"
+
       - name: Extract bundles
         if: env.BUNDLE_COUNT != '0'
         run: |
