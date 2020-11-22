@@ -44,7 +44,7 @@ jobs:
       - name: Extract bundles
         if: env.BUNDLE_COUNT != '0'
         run: |
-          curl -L https://github.com/liveahero-wiki/cdn/releases/download/0.1/AssetStudio.zip > AssetStudio.zip
+          cmd /c "curl.exe -L https://github.com/liveahero-wiki/cdn/releases/download/0.1/AssetStudio.zip > AssetStudio.zip"
           Expand-Archive -Path AssetStudio.zip -DestinationPath AssetStudio
           .\AssetStudio\Release\AssetStudioConsole.exe ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR} ${env:FINISH_INDICATOR}
           npm run watch:finish-indicator -- ${env:FINISH_INDICATOR}
