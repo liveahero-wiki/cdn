@@ -1,19 +1,12 @@
 ---
 
-* All Artifacts (ignored sensitive data): https://github.com/liveahero-community/archives/tree/artifacts
-* Histories: https://github.com/liveahero-community/archives/commits/artifacts
+* Assets for Wiki: https://github.com/liveahero-wiki/cdn/tree/gh-pages
+* Histories: https://github.com/liveahero-wiki/cdn/commits/gh-pages
+* Original source code: https://github.com/liveahero-community/artifacts
 
 ---
 
-## Quick start
-
-Checkout `./.github/workflows/download-and-extract.yml`
-
-* Download official bundles (Only diff with previous version)
-* Extract bundles (Base on AssetStudio)
-* Filter assets (Ignore sensitive data and duplication)
-* Commit asset list info to `main` branch
-* Commit artifacts to `artifacts` branch
+![](https://img.shields.io/github/repo-size/liveahero-wiki/cdn)
 
 ## About extracting asset bundles
 
