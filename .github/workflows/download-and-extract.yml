@@ -107,6 +107,7 @@ jobs:
         if: env.BUNDLE_COUNT != '0'
         working-directory: BOOK
         run: |
+          md -Force ..\${env:ARTIFACTS_DIR}\MonoBehaviour\
           Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\MonoBehaviour\* -Destination .
           git config --global user.name ${env:USER_NAME}
           git config --global user.email ${env:USER_EMAIL}
