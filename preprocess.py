@@ -13,6 +13,9 @@ def parseJson(filename):
 
 def forAllCwd(root, pattern, callback):
   root = os.path.abspath(root)
+  if not os.path.exists(root):
+    return
+
   files = next(os.walk(root))[2]
 
   for f in files:
