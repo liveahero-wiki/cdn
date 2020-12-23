@@ -71,7 +71,7 @@ const downloadAsset = async (filePath: string) => {
 
 const main = async () => {
   // Step 1: get app version info.
-  const { appVersion } = await getVersion(BASE_FETCH_OPTIONS);
+  const { appVersion } = { appVersion: "1.0.10" }; //await getVersion(BASE_FETCH_OPTIONS);
   const options = {
     ...BASE_FETCH_OPTIONS,
     headers: {
