@@ -40,7 +40,6 @@ jobs:
           $Env:BUNDLE_COUNT = (Get-ChildItem ${env:BUNDLES_DIR} | Measure-Object).Count
           Write-Output "BUNDLE_COUNT: ${env:BUNDLE_COUNT}"
           echo "BUNDLE_COUNT=${env:BUNDLE_COUNT}" >> ${env:GITHUB_ENV}
-          (dir -r ${env:BUNDLES_DIR}).FullName
 
       - name: Extract bundles
         if: env.BUNDLE_COUNT != '0'
@@ -53,7 +52,7 @@ jobs:
           (dir -r ${env:ARTIFACTS_DIR}).FullName
           
       - uses: actions/checkout@v2
-        if: env.BUNDLE_COUNT != '0'
+        if: false
         with:
           repository: rongjie-alter/test
           token: ${{ secrets.BOOK_SECRET }}
@@ -61,7 +60,7 @@ jobs:
           clean: false
           
       - name: Commit bundles
-        if: env.BUNDLE_COUNT != '0'
+        if: false
         working-directory: ASSETS
         run: |
           md -Force ..\${env:BUNDLES_DIR}
@@ -77,7 +76,6 @@ jobs:
       - name: Filter assets
         if: env.BUNDLE_COUNT != '0'
         run: |
-          (dir -r .).FullName
           npm run remove:duplicated-assets -- ${env:ARTIFACTS_DIR}
 
       - name: Set up Python ${{ matrix.python-version }}
