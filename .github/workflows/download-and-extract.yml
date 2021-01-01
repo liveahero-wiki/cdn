@@ -51,6 +51,28 @@ jobs:
           npm run watch:finish-indicator -- ${env:FINISH_INDICATOR}
           Remove-Item ${env:FINISH_INDICATOR}
           (dir -r ${env:ARTIFACTS_DIR}).FullName
+          
+      - uses: actions/checkout@v2
+        if: env.BUNDLE_COUNT != '0'
+        with:
+          repository: rongjie-alter/test
+          token: ${{ secrets.BOOK_SECRET }}
+          path: ASSETS
+          clean: false
+          
+      - name: Commit bundles
+        if: env.BUNDLE_COUNT != '0'
+        working-directory: ASSETS
+        run: |
+          md -Force ..\${env:BUNDLES_DIR}
+          Copy-Item -Force -Recurse -Path ..\${env:BUNDLES_DIR}\* -Destination .
+          git config --global user.name ${env:USER_NAME}
+          git config --global user.email ${env:USER_EMAIL}
+
+          git add *
+
+          git commit -m "Auto-extract assets to artifacts"
+          git push origin HEAD
 
       - name: Filter assets
         if: env.BUNDLE_COUNT != '0'
