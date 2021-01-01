@@ -57,8 +57,8 @@ const getDiffAssetList = async (options: RequestInit, appVersion: string) => {
   return [];
 };
 
-const downloadAsset = async (filePath: string) => {
-  const url = `${STATIC_URL}/${filePath}`;
+const downloadAsset = async (filePath: string, appVersion: string) => {
+  const url = `${STATIC_URL}/${appVersion}/${filePath}`;
   const res = await fetch(url);
 
   await new Promise((resolve, reject) => {
@@ -94,7 +94,7 @@ const main = async () => {
   for await (const asset of assetList) {
     const index = assetList.indexOf(asset) + 1;
     await fs.mkdirp(`${BUNDLES_DIR}/${dirname(asset.filePath)}`);
-    await downloadAsset(asset.filePath);
+    await downloadAsset(asset.filePath, appVersion);
     console.log(`[${index} / ${assetList.length}] ${asset.filePath}`);
   }
 
