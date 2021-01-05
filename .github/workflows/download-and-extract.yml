@@ -41,7 +41,7 @@ jobs:
         id: bundles
         run: |
           New-Item -Path . -Name ${env:BUNDLES_DIR} -ItemType directory
-          $Env:FORCE_VERSION = {{ github.event.inputs.forceVersion }} 
+          $Env:FORCE_VERSION = ${{ github.event.inputs.forceVersion }} 
           npm run download:official-bundles
           $Env:BUNDLE_COUNT = (Get-ChildItem ${env:BUNDLES_DIR} | Measure-Object).Count
           Write-Output "BUNDLE_COUNT: ${env:BUNDLE_COUNT}"
