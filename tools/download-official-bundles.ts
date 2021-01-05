@@ -14,6 +14,12 @@ const BUNDLES_DIR = `${appRoot}/bundles`;
 const ASSETLIST_PATH = `${appRoot}/version/assetList.Android`;
 
 const getVersion = async (options: RequestInit) => {
+  const forceVersion = process.env.FORCE_VERSION;
+  console.log(`ForceVersion: ${forceVersion}`);
+  if (forceVersion && forceVersion != "") {
+    return { appVersion: forceVersion }
+  }
+
   const res = await fetch(`${API_URL}/api/status/version`, options);
 
   if (res.ok) {
@@ -91,8 +97,9 @@ const main = async () => {
   // Step 2: get asset list and download the assets.
   const assetList = await getDiffAssetList(options, appVersion);
 
+  let i = 0;
   for await (const asset of assetList) {
-    const index = assetList.indexOf(asset) + 1;
+    const index = i++;
     await fs.mkdirp(`${BUNDLES_DIR}/${dirname(asset.filePath)}`);
     await downloadAsset(asset.filePath, appVersion);
     console.log(`[${index} / ${assetList.length}] ${asset.filePath}`);
