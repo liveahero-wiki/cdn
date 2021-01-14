@@ -76,4 +76,4 @@ if __name__ == '__main__':
   forAllCwd("MonoBehaviour", re.compile(r"\w+\.book\.json"), Book("book:", "importGridList"))
   forAllCwd("MonoBehaviour", re.compile(r"\w+\.chapter\.json"), Book("chapter:", "settingList"))
 
-  forAllCwd("Sprite", re.compile(r"^banner_\w+\.png"), processMinify)
+  forAllCwd("Sprite", re.compile(r"^banner_.+\.png$"), processMinify)
