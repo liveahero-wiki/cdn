@@ -6,8 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       forceVersion:
-        description: 'Define appVersion'     
-        required: true
+        description: 'Define appVersion'
         default: ''
 
 jobs:
