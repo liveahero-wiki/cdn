@@ -8,6 +8,9 @@ on:
       forceVersion:
         description: 'Define appVersion'
         default: ''
+      downloadAll:
+        description: 'Force download all (1)'
+        default: '0'
 
 jobs:
   build:
