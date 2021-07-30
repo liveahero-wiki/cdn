@@ -51,12 +51,12 @@ const getDiffAssetList = async (options: RequestInit, appVersion: string) => {
     await fs.writeFile(`${ASSETLIST_PATH}.cache`, data);
 
     const currentAssetList = listAssets(data);
-    let previousAssetList = []
+    let previousAssetList = listAssets(await fs.readFile(ASSETLIST_PATH, 'utf-8'));
     
     const downloadAll = process.env.DOWNLOAD_ALL;
     console.log(`DownloadAll: ${downloadAll}`);
     if (downloadAll != "0") {
-      previousAssetList = listAssets(await fs.readFile(ASSETLIST_PATH, 'utf-8'));
+      previousAssetList.length = 0;
     }
     
     const differentAssetList = _.differenceBy(currentAssetList, previousAssetList, 'filePath');
