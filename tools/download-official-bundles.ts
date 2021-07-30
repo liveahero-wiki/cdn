@@ -55,7 +55,7 @@ const getDiffAssetList = async (options: RequestInit, appVersion: string) => {
     
     const downloadAll = process.env.DOWNLOAD_ALL;
     console.log(`DownloadAll: ${downloadAll}`);
-    if (downloadAll != "0") {
+    if (downloadAll && downloadAll != "0") {
       previousAssetList.length = 0;
     }
     
