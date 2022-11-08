@@ -22,16 +22,16 @@ jobs:
       ARTIFACTS_DIR: artifacts
       FINISH_INDICATOR: done
       ARTIFACTS_BRANCH: gh-pages
-    runs-on: windows-2019
+    runs-on: windows-latest
     strategy:
       matrix:
-        node-version: [12.x]
-        python-version: [3.8]
+        node-version: [16.x]
+        python-version: [3.9]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -60,7 +60,7 @@ jobs:
           Remove-Item ${env:FINISH_INDICATOR}
           (dir -r ${env:ARTIFACTS_DIR}).FullName
           
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         if: false
         with:
           repository: rongjie-alter/test
@@ -88,7 +88,7 @@ jobs:
           npm run remove:duplicated-assets -- ${env:ARTIFACTS_DIR}
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         if: env.BUNDLE_COUNT != '0'
         with:
           python-version: ${{ matrix.python-version }}
