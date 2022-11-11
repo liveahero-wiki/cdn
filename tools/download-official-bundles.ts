@@ -103,12 +103,19 @@ const main = async () => {
   // Step 2: get asset list and download the assets.
   const assetList = await getDiffAssetList(options, appVersion);
 
+  let failed: string[] = [];
+
   let i = 0;
   for await (const asset of assetList) {
     const index = i++;
     await fs.mkdirp(`${BUNDLES_DIR}/${dirname(asset.filePath)}`);
-    await downloadAsset(asset.filePath, appVersion);
-    console.log(`[${index} / ${assetList.length}] ${asset.filePath}`);
+    try {
+      await downloadAsset(asset.filePath, appVersion);
+      console.log(`[${index} / ${assetList.length}] ${asset.filePath}`);
+    } catch (e) {
+      failed.push(asset.filePath)
+      console.warn(`[${index} / ${assetList.length}] ${asset.filePath}`);
+    }
   }
 
   // Step 3: Retire old assetList.Android.
@@ -116,6 +123,7 @@ const main = async () => {
   await fs.move(`${ASSETLIST_PATH}.cache`, ASSETLIST_PATH);
 
   console.log('Download finished');
+  console.log("Failed:", failed);
 };
 
 main();
