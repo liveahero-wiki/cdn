@@ -114,7 +114,16 @@ const main = async () => {
       console.log(`[${index} / ${assetList.length}] ${asset.filePath}`);
     } catch (e) {
       failed.push(asset.filePath)
+      let filePath = `${BUNDLES_DIR}/${filePath}`;
       console.warn(`[${index} / ${assetList.length}] ${asset.filePath}`);
+      fs.exists(filePath, function(exists) {
+        if (exists) {
+          console.log('File exists. Deleting now ...');
+          fs.unlinkSync(filePath);
+        } else {
+          console.log('File not found, so not deleting.');
+        }
+      });
     }
   }
 
