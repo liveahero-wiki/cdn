@@ -22,7 +22,7 @@ jobs:
       ARTIFACTS_DIR: artifacts
       FINISH_INDICATOR: done
       ARTIFACTS_BRANCH: gh-pages
-    runs-on: windows-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         node-version: [16.x]
