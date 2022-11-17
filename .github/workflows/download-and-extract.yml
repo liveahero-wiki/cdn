@@ -50,16 +50,19 @@ jobs:
           Write-Output "BUNDLE_COUNT: ${env:BUNDLE_COUNT}"
           echo "BUNDLE_COUNT=${env:BUNDLE_COUNT}" >> ${env:GITHUB_ENV}
 
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        if: env.BUNDLE_COUNT != '0'
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
       - name: Extract bundles
         if: env.BUNDLE_COUNT != '0'
         run: |
-          cmd /c "curl.exe -L https://github.com/liveahero-wiki/cdn/releases/download/0.1/AssetStudio.zip > AssetStudio.zip"
-          Expand-Archive -Path AssetStudio.zip -DestinationPath AssetStudio
-          .\AssetStudio\Release\AssetStudioConsole.exe ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR} ${env:FINISH_INDICATOR}
-          npm run watch:finish-indicator -- ${env:FINISH_INDICATOR}
-          Remove-Item ${env:FINISH_INDICATOR}
-          (dir -r ${env:ARTIFACTS_DIR}).FullName
-          
+          python -m pip install -r requirements.txt
+          python extract.py ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR}
+
       - uses: actions/checkout@v3
         if: false
         with:
@@ -86,12 +89,6 @@ jobs:
         if: env.BUNDLE_COUNT != '0'
         run: |
           npm run remove:duplicated-assets -- ${env:ARTIFACTS_DIR}
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        if: env.BUNDLE_COUNT != '0'
-        with:
-          python-version: ${{ matrix.python-version }}
 
       - name: Process JSON files
         if: env.BUNDLE_COUNT != '0'

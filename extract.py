@@ -1,0 +1,60 @@
+#! python3
+
+import argparse
+import os
+import json
+
+import UnityPy
+
+CLASSES = ["MonoBehaviour", "Texture2D", "Sprite", "TextAsset", "AudioClip"]
+
+def unpack_all_assets(src_folder: str, dest_folder: str):
+  for c in CLASSES:
+    os.makedirs(os.path.join(dest_folder, c), exist_ok=True)
+
+  for root, dirs, files in os.walk(src_folder):
+    for filename in files:
+      file_path = os.path.join(root, filename)
+      env = UnityPy.load(file_path)
+
+      for obj in env.objects:
+        if obj.type.name not in CLASSES:
+          continue
+
+        data = obj.read()
+        dest = os.path.join(dest_folder, obj.type.name, data.name)
+        print(dest)
+
+        if obj.type.name in ["Texture2D", "Sprite"]:
+          dest, ext = os.path.splitext(dest)
+          dest = dest + ".png"
+          data.image.save(dest)
+
+        elif obj.type.name == "MonoBehaviour":
+          dest, ext = os.path.splitext(dest)
+          dest = dest + ".json"
+          if obj.serialized_type.nodes:
+            tree = obj.read_typetree()
+            with open(dest, "w", encoding="utf8") as f:
+              json.dump(tree, f, indent=2)
+
+        elif obj.type.name == "TextAsset":
+          data = obj.read()
+          dest, ext = os.path.splitext(dest)
+          dest = dest + ".txt"
+          with open(dest, "wb") as f:
+            f.write(data.script)
+
+        elif obj.type.name == "AudioClip":
+          for name, raw in data.samples.items():
+            dest = os.path.join(dest_folder, obj.type.name, name)
+            with open(dest, "wb") as f:
+              f.write(raw)
+
+if __name__ == '__main__':
+  parser = argparse.ArgumentParser()
+  parser.add_argument("src", help="asset bundles folder")
+  parser.add_argument("dest", help="output folder")
+
+  args = parser.parse_args()
+  unpack_all_assets(args.src, args.dest)
