@@ -23,7 +23,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
 
         data = obj.read()
         dest = os.path.join(dest_folder, obj.type.name, data.name)
-        print(dest)
+        print(f"::debug::{dest}")
 
         if obj.type.name in ["Texture2D", "Sprite"]:
           dest, ext = os.path.splitext(dest)
@@ -34,9 +34,12 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
           dest, ext = os.path.splitext(dest)
           dest = dest + ".json"
           if obj.serialized_type.nodes:
-            tree = obj.read_typetree()
-            with open(dest, "w", encoding="utf8") as f:
-              json.dump(tree, f, indent=2)
+            try:
+              tree = obj.read_typetree()
+              with open(dest, "w", encoding="utf8") as f:
+                json.dump(tree, f, indent=2)
+            except Exception as e:
+              print(f"::warning file={file_path}::{e}")
 
         elif obj.type.name == "TextAsset":
           data = obj.read()
