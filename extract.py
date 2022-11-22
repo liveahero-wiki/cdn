@@ -21,7 +21,12 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
         if obj.type.name not in CLASSES:
           continue
 
-        data = obj.read()
+        try:
+          data = obj.read()
+        except Exception as e:
+          print(f"::warning file={file_path}::{e}")
+          continue
+
         dest = os.path.join(dest_folder, obj.type.name, data.name)
         print(f"::debug::{dest}")
 
@@ -42,7 +47,6 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
               print(f"::warning file={file_path}::{e}")
 
         elif obj.type.name == "TextAsset":
-          data = obj.read()
           dest, ext = os.path.splitext(dest)
           dest = dest + ".txt"
           with open(dest, "wb") as f:
