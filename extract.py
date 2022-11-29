@@ -42,7 +42,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
             try:
               tree = obj.read_typetree()
               with open(dest, "w", encoding="utf8") as f:
-                json.dump(tree, f, indent=2)
+                json.dump(tree, f, ensure_ascii=False, indent=2)
             except Exception as e:
               print(f"::warning file={file_path}::{e}")
 
