@@ -37,7 +37,10 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
 
         elif obj.type.name == "MonoBehaviour":
           dest, ext = os.path.splitext(dest)
+          if ext in [".book", ".chapter"]:
+            dest = dest + ext
           dest = dest + ".json"
+
           if obj.serialized_type.nodes:
             try:
               tree = obj.read_typetree()
