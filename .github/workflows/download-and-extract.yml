@@ -121,6 +121,7 @@ jobs:
           git add Sprite\banner_*.jpg
           git add Sprite\ui_frame_*.png
           git add Sprite\ui_icon_*.png
+          git add Sprite\ui_banner_info_*.png
 
           git commit -m "Auto-extract assets to artifacts"
           git push origin HEAD
