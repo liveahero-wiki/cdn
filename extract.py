@@ -30,7 +30,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
         dest = os.path.join(dest_folder, obj.type.name, data.name)
         print(f"::debug::{dest}")
 
-        if obj.type.name in ["Texture2D", "Sprite"]:
+        if obj.type.name == "Sprite":
           dest, ext = os.path.splitext(dest)
           dest = dest + ".png"
           data.image.save(dest)
