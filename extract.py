@@ -3,8 +3,11 @@
 import argparse
 import os
 import json
+import sys
 
 import UnityPy
+
+print("Encoding:", sys.getdefaultencoding())
 
 CLASSES = ["MonoBehaviour", "Texture2D", "Sprite", "TextAsset", "AudioClip"]
 
@@ -28,7 +31,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
           continue
 
         dest = os.path.join(dest_folder, obj.type.name, data.name)
-        print(f"::debug::{dest}")
+        #print(f"::debug::{dest}")
 
         if obj.type.name == "Sprite":
           dest, ext = os.path.splitext(dest)
