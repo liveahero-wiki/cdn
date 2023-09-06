@@ -72,6 +72,7 @@ jobs:
           Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
           .\AssetRipper\AssetRipper.exe ${env:BUNDLES_DIR} -o ${env:ARTIFACTS_RIPPER_DIR} -q
           (dir -r ${env:ARTIFACTS_RIPPER_DIR}).FullName
+          rm ${env:BUNDLES_DIR} -r -force
 
       - uses: actions/checkout@v3
         if: false
@@ -118,8 +119,10 @@ jobs:
         if: env.BUNDLE_COUNT != '0'
         working-directory: GH
         run: |
-          Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\* -Destination .
-          Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_RIPPER_DIR}\ExportedProject\Assets\Texture2D\* -Destination .\Texture2D\
+          Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\MonoBehaviour\* -Destination .\MonoBehaviour\
+          Move-Item -Force -Path ..\${env:ARTIFACTS_DIR}\Sprite\* -Destination .\Sprite\
+          Move-Item -Force -Path ..\${env:ARTIFACTS_RIPPER_DIR}\ExportedProject\Assets\Texture2D\* -Destination .\Texture2D\
+
           git config --global user.name ${env:USER_NAME}
           git config --global user.email ${env:USER_EMAIL}
 
