@@ -1,0 +1,178 @@
+name: Download-and-extract-v2
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    inputs:
+      forceVersion:
+        description: 'Define appVersion'
+        default: ''
+      downloadAll:
+        description: 'Force download all (1)'
+        default: '0'
+
+jobs:
+  build:
+    name: Build
+    env:
+      USER_NAME: lah-wiki-bot
+      USER_EMAIL: noreply@github.com
+      BUNDLES_DIR: bundles
+      ARTIFACTS_DIR: artifacts
+      ARTIFACTS_RIPPER_DIR: ripper-output
+      ASSET_RIPPER_VERSION: "0.3.4.0"
+      FINISH_INDICATOR: done
+      ARTIFACTS_BRANCH: gh-pages
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        node-version: [16.x]
+        python-version: [3.9]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Installation
+        run: |
+          npx yarn install
+
+      - name: Download official bundles
+        id: bundles
+        run: |
+          New-Item -Path . -Name ${env:BUNDLES_DIR} -ItemType directory
+          $Env:FORCE_VERSION = "${{ github.event.inputs.forceVersion }}"
+          $Env:DOWNLOAD_ALL = "${{ github.event.inputs.downloadAll }}"
+          npm run download:official-bundles
+          $Env:BUNDLE_COUNT = (Get-ChildItem ${env:BUNDLES_DIR} | Measure-Object).Count
+          Write-Output "BUNDLE_COUNT: ${env:BUNDLE_COUNT}"
+          echo "BUNDLE_COUNT=${env:BUNDLE_COUNT}" >> ${env:GITHUB_ENV}
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        if: env.BUNDLE_COUNT != '0'
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Extract bundles
+        if: env.BUNDLE_COUNT != '0'
+        run: |
+          python -m pip install -r requirements.txt
+          python extract.py ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR}
+
+      - name: Extract bundles (AssetRipper)
+        if: env.BUNDLE_COUNT != '0'
+        run: |
+          cmd /c "curl.exe -L https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip > AssetRipper.zip"
+          Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
+          .\AssetRipper\AssetRipper.exe ${env:BUNDLES_DIR} -o ${env:ARTIFACTS_RIPPER_DIR} -q
+          (dir -r ${env:ARTIFACTS_RIPPER_DIR}).FullName
+
+      - uses: actions/checkout@v3
+        if: false
+        with:
+          repository: rongjie-alter/test
+          token: ${{ secrets.BOOK_SECRET }}
+          path: ASSETS
+          clean: false
+          
+      - name: Commit bundles
+        if: false
+        working-directory: ASSETS
+        run: |
+          md -Force ..\${env:BUNDLES_DIR}
+          Copy-Item -Force -Recurse -Path ..\${env:BUNDLES_DIR}\* -Destination .
+          git config --global user.name ${env:USER_NAME}
+          git config --global user.email ${env:USER_EMAIL}
+
+          git add *
+
+          git commit -m "Auto-extract assets to artifacts"
+          git push origin HEAD
+
+      - name: Filter assets
+        if: env.BUNDLE_COUNT != '0'
+        run: |
+          npm run remove:duplicated-assets -- ${env:ARTIFACTS_DIR}
+
+      - name: Process JSON files
+        if: env.BUNDLE_COUNT != '0'
+        working-directory: ${{ env.ARTIFACTS_DIR }}
+        run: |
+          python -m pip install Pillow
+          python ..\preprocess.py
+
+      - uses: actions/checkout@v3
+        if: env.BUNDLE_COUNT != '0'
+        with:
+          ref: ${{ env.ARTIFACTS_BRANCH }}
+          path: GH
+          clean: false
+
+      - name: Commit images
+        if: env.BUNDLE_COUNT != '0'
+        working-directory: GH
+        run: |
+          Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\* -Destination .
+          Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_RIPPER_DIR}\ExportedProject\Assets\Texture2D\* -Destination .
+          git config --global user.name ${env:USER_NAME}
+          git config --global user.email ${env:USER_EMAIL}
+
+          git add MonoBehaviour\fg_*.json
+          git add Texture2D\fg_*.png
+          git add Sprite\icon_*.png
+          git add Sprite\item_*.png
+          git add Sprite\b_skill*.png
+          git add Sprite\status_*.png
+          git add Sprite\banner_*.jpg
+          git add Sprite\ui_frame_*.png
+          git add Sprite\ui_icon_*.png
+          git add Sprite\ui_banner_info_*.jpg
+          git add Sprite\skillTree_*.png
+
+          git commit -m "Auto-extract assets to artifacts"
+          git push origin HEAD
+
+      - uses: actions/checkout@v3
+        if: env.BUNDLE_COUNT != '0'
+        with:
+          repository: ${{ secrets.BOOK_REPO }}
+          token: ${{ secrets.BOOK_SECRET }}
+          path: BOOK
+          clean: false
+
+      - name: Commit books
+        if: env.BUNDLE_COUNT != '0'
+        working-directory: BOOK
+        run: |
+          md -Force ..\${env:ARTIFACTS_DIR}\MonoBehaviour\
+          Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\MonoBehaviour\* -Destination .
+          git config --global user.name ${env:USER_NAME}
+          git config --global user.email ${env:USER_EMAIL}
+
+          git add *.book.json
+          git add *.chapter.json
+
+          git commit -m "Auto-extract assets to artifacts"
+          git push origin HEAD
+
+      - name: Commit asset list info
+        if: env.BUNDLE_COUNT != '0'
+        run: |
+          $cmdOutput = (git status --porcelain --untracked-files=no) | Out-String
+          if ($cmdOutput.length -gt 8) {
+            Write-Output "Asset list is updated."
+            git config --global user.name ${env:USER_NAME}
+            git config --global user.email ${env:USER_EMAIL}
+            git add version
+            git commit -m "Auto-update asset list"
+            git push origin HEAD
+            Write-Output "🤘 update version complete."
+          } else {
+            Write-Output "Assets are already up to date."
+          }
