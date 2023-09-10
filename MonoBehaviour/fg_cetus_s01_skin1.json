@@ -1,0 +1,31 @@
+{
+"m_Name": "fg_cetus_s01_skin1",
+"cellSize": 256,
+"padding": 3,
+"textureDataList": [
+{
+"name": "fg_cetus_s01_skin1",
+"atlasName": "fg_cetus_s01_skin1_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+0,
+0,
+1,
+2,
+0,
+3,
+4,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+"transparentIndex": 0
+}
+]
+}

@@ -1,0 +1,55 @@
+{
+"m_Name": "fg_goro_h02_skin1",
+"cellSize": 256,
+"padding": 3,
+"textureDataList": [
+{
+"name": "fg_goro_h02_skin1",
+"atlasName": "fg_goro_h02_skin1_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14
+],
+"transparentIndex": 14
+},
+{
+"name": "fg_goro_h02b_skin1",
+"atlasName": "fg_goro_h02_skin1_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+15,
+2,
+3,
+16,
+5,
+17,
+18,
+19,
+20,
+21,
+22,
+12,
+13,
+14
+],
+"transparentIndex": 14
+}
+]
+}

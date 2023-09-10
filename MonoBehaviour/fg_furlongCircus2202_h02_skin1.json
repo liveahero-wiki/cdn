@@ -1,0 +1,55 @@
+{
+"m_Name": "fg_furlongCircus2202_h02_skin1",
+"cellSize": 256,
+"padding": 3,
+"textureDataList": [
+{
+"name": "fg_furlongCircus2202_h02_skin1",
+"atlasName": "fg_furlongCircus2202_h02_skin1_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+13
+],
+"transparentIndex": 13
+},
+{
+"name": "fg_furlongCircus2202_h02b_skin1",
+"atlasName": "fg_furlongCircus2202_h02_skin1_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+14,
+7,
+8,
+15,
+16,
+11,
+12,
+13,
+13
+],
+"transparentIndex": 13
+}
+]
+}

@@ -1,0 +1,55 @@
+{
+"m_Name": "fg_narihitoMeteorite2112_h02_skin4",
+"cellSize": 256,
+"padding": 3,
+"textureDataList": [
+{
+"name": "fg_narihitoMeteorite2112_h02_skin4",
+"atlasName": "fg_narihitoMeteorite2112_h02_skin4_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+13,
+14
+],
+"transparentIndex": -1
+},
+{
+"name": "fg_narihitoMeteorite2112_h02b_skin4",
+"atlasName": "fg_narihitoMeteorite2112_h02_skin4_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+15,
+16,
+9,
+17,
+18,
+12,
+13,
+14
+],
+"transparentIndex": -1
+}
+]
+}

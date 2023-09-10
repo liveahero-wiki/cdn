@@ -1,0 +1,31 @@
+{
+"m_Name": "fg_ADV_pubraseer_h01_skin2",
+"cellSize": 256,
+"padding": 3,
+"textureDataList": [
+{
+"name": "fg_ADV_pubraseer_h01_skin2",
+"atlasName": "fg_ADV_pubraseer_h01_skin2_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12,
+12,
+13
+],
+"transparentIndex": 12
+}
+]
+}
