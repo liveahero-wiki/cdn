@@ -121,10 +121,8 @@ jobs:
         run: |
           Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\MonoBehaviour\* -Destination .\MonoBehaviour\
           Move-Item -Force -Path ..\${env:ARTIFACTS_DIR}\Sprite\* -Destination .\Sprite\
-          $Folder = '..\${env:ARTIFACTS_RIPPER_DIR}\ExportedProject\Assets\Texture2D'
-          if (Test-Path -Path $Folder) {
-            Move-Item -Force -Path  $Folder\* -Destination .\Texture2D\
-          }
+          md -Force ..\${env:ARTIFACTS_RIPPER_DIR}\ExportedProject\Assets\Texture2D\
+          Move-Item -Force -Path ..\${env:ARTIFACTS_RIPPER_DIR}\ExportedProject\Assets\Texture2D\* -Destination .\Texture2D\
 
           git config --global user.name ${env:USER_NAME}
           git config --global user.email ${env:USER_EMAIL}
