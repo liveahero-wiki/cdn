@@ -1,11 +1,11 @@
 {
-"m_Name": "fg_androidSoldierFire_s01",
+"m_Name": "fg_androidSoldierWater_s01_skin1",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_androidSoldierFire_s01",
-"atlasName": "fg_androidSoldierFire_s01_Atlas0",
+"name": "fg_androidSoldierWater_s01_skin1",
+"atlasName": "fg_androidSoldierWater_s01_skin1_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -67,8 +67,8 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_androidSoldierFire_s01d",
-"atlasName": "fg_androidSoldierFire_s01_Atlas0",
+"name": "fg_androidSoldierWater_s01d_skin1",
+"atlasName": "fg_androidSoldierWater_s01_skin1_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -123,7 +123,7 @@
 0,
 0,
 33,
-37,
+34,
 0,
 0
 ],
