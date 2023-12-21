@@ -58,11 +58,11 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
           with open(dest, "wb") as f:
             f.write(data.script)
 
-        elif obj.type.name == "AudioClip":
-          for name, raw in data.samples.items():
-            dest = os.path.join(dest_folder, obj.type.name, name)
-            with open(dest, "wb") as f:
-              f.write(raw)
+        #elif obj.type.name == "AudioClip":
+        #  for name, raw in data.samples.items():
+        #    dest = os.path.join(dest_folder, obj.type.name, name)
+        #    with open(dest, "wb") as f:
+        #      f.write(raw)
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
