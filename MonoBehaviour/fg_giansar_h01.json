@@ -242,6 +242,30 @@
 12
 ],
 "transparentIndex": 12
+},
+{
+"name": "fg_giansar_h01l",
+"atlasName": "fg_giansar_h01_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+24,
+11,
+12,
+13,
+12
+],
+"transparentIndex": 12
 }
 ]
 }
