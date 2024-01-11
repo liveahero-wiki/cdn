@@ -1,11 +1,11 @@
 {
-"m_Name": "fg_polarisWorkout2312_h02_skin1",
+"m_Name": "fg_polarisWorkout2312_h02_skin8",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_polarisWorkout2312_h02_skin1",
-"atlasName": "fg_polarisWorkout2312_h02_skin1_Atlas0",
+"name": "fg_polarisWorkout2312_h02_skin8",
+"atlasName": "fg_polarisWorkout2312_h02_skin8_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -64,11 +64,11 @@
 52,
 53
 ],
-"transparentIndex": -1
+"transparentIndex": 53
 },
 {
-"name": "fg_polarisWorkout2312_h02b_skin1",
-"atlasName": "fg_polarisWorkout2312_h02_skin1_Atlas0",
+"name": "fg_polarisWorkout2312_h02b_skin8",
+"atlasName": "fg_polarisWorkout2312_h02_skin8_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -127,11 +127,11 @@
 52,
 53
 ],
-"transparentIndex": -1
+"transparentIndex": 53
 },
 {
-"name": "fg_polarisWorkout2312_h02c_skin1",
-"atlasName": "fg_polarisWorkout2312_h02_skin1_Atlas0",
+"name": "fg_polarisWorkout2312_h02c_skin8",
+"atlasName": "fg_polarisWorkout2312_h02_skin8_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -190,11 +190,11 @@
 52,
 53
 ],
-"transparentIndex": -1
+"transparentIndex": 53
 },
 {
-"name": "fg_polarisWorkout2312_h02d_skin1",
-"atlasName": "fg_polarisWorkout2312_h02_skin1_Atlas0",
+"name": "fg_polarisWorkout2312_h02d_skin8",
+"atlasName": "fg_polarisWorkout2312_h02_skin8_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -253,7 +253,7 @@
 52,
 53
 ],
-"transparentIndex": -1
+"transparentIndex": 53
 }
 ]
 }
