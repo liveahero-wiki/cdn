@@ -194,6 +194,30 @@
 2
 ],
 "transparentIndex": 2
+},
+{
+"name": "fg_rexer_h01i_skin2",
+"atlasName": "fg_rexer_h01_skin2_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+20,
+21,
+2,
+22,
+23,
+24,
+25,
+26,
+27,
+28,
+29,
+30,
+31,
+2,
+2
+],
+"transparentIndex": 2
 }
 ]
 }
