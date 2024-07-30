@@ -9,7 +9,7 @@ import UnityPy
 
 print("Encoding:", sys.getdefaultencoding())
 
-CLASSES = ["MonoBehaviour", "Texture2D", "Sprite", "TextAsset", "AudioClip"]
+CLASSES = ["MonoBehaviour", "Sprite", "TextAsset"]
 
 def unpack_all_assets(src_folder: str, dest_folder: str):
   for c in CLASSES:
