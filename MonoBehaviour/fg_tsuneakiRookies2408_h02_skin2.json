@@ -1,11 +1,11 @@
 {
-"m_Name": "fg_tsuneakiRookies2408_h02",
+"m_Name": "fg_tsuneakiRookies2408_h02_skin2",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_tsuneakiRookies2408_h02",
-"atlasName": "fg_tsuneakiRookies2408_h02_Atlas0",
+"name": "fg_tsuneakiRookies2408_h02_skin2",
+"atlasName": "fg_tsuneakiRookies2408_h02_skin2_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -67,8 +67,8 @@
 "transparentIndex": -1
 },
 {
-"name": "fg_tsuneakiRookies2408_h02b",
-"atlasName": "fg_tsuneakiRookies2408_h02_Atlas0",
+"name": "fg_tsuneakiRookies2408_h02b_skin2",
+"atlasName": "fg_tsuneakiRookies2408_h02_skin2_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -130,8 +130,8 @@
 "transparentIndex": -1
 },
 {
-"name": "fg_tsuneakiRookies2408_h02c",
-"atlasName": "fg_tsuneakiRookies2408_h02_Atlas0",
+"name": "fg_tsuneakiRookies2408_h02c_skin2",
+"atlasName": "fg_tsuneakiRookies2408_h02_skin2_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
