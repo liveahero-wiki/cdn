@@ -1,11 +1,11 @@
 {
-"m_Name": "fg_gaisei_h02",
+"m_Name": "fg_pubraseerRisingMoon2410_h02",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_gaisei_h02",
-"atlasName": "fg_gaisei_h02_Atlas0",
+"name": "fg_pubraseerRisingMoon2410_h02",
+"atlasName": "fg_pubraseerRisingMoon2410_h02_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -64,11 +64,11 @@
 52,
 53
 ],
-"transparentIndex": 53
+"transparentIndex": 5
 },
 {
-"name": "fg_gaisei_h02b",
-"atlasName": "fg_gaisei_h02_Atlas0",
+"name": "fg_pubraseerRisingMoon2410_h02b",
+"atlasName": "fg_pubraseerRisingMoon2410_h02_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -109,15 +109,15 @@
 34,
 35,
 36,
-54,
-55,
-56,
+37,
+38,
+39,
 40,
 41,
 42,
-57,
-58,
-59,
+54,
+55,
+45,
 46,
 47,
 48,
@@ -127,7 +127,7 @@
 52,
 53
 ],
-"transparentIndex": 53
+"transparentIndex": 5
 }
 ]
 }

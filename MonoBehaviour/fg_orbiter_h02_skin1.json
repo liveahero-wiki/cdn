@@ -1,11 +1,11 @@
 {
-"m_Name": "fg_gaisei_h02",
+"m_Name": "fg_orbiter_h02_skin1",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_gaisei_h02",
-"atlasName": "fg_gaisei_h02_Atlas0",
+"name": "fg_orbiter_h02_skin1",
+"atlasName": "fg_orbiter_h02_skin1_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -67,8 +67,8 @@
 "transparentIndex": 53
 },
 {
-"name": "fg_gaisei_h02b",
-"atlasName": "fg_gaisei_h02_Atlas0",
+"name": "fg_orbiter_h02b_skin1",
+"atlasName": "fg_orbiter_h02_skin1_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -104,20 +104,20 @@
 29,
 30,
 31,
-32,
+54,
 33,
 34,
 35,
 36,
-54,
+37,
 55,
 56,
 40,
 41,
 42,
+43,
 57,
-58,
-59,
+45,
 46,
 47,
 48,
