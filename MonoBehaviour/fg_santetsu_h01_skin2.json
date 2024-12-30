@@ -242,6 +242,30 @@
 12
 ],
 "transparentIndex": 12
+},
+{
+"name": "fg_santetsu_h01k_skin2",
+"atlasName": "fg_santetsu_h01_skin2_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+31,
+32,
+33,
+34,
+4,
+35,
+36,
+7,
+37,
+38,
+39,
+40,
+12,
+12,
+12
+],
+"transparentIndex": 12
 }
 ]
 }
