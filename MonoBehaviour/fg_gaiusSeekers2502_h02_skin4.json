@@ -1,11 +1,11 @@
 {
-"m_Name": "fg_gaiusSeekers2502_h02_skin2",
+"m_Name": "fg_gaiusSeekers2502_h02_skin4",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_gaiusSeekers2502_h02_skin2",
-"atlasName": "fg_gaiusSeekers2502_h02_skin2_Atlas0",
+"name": "fg_gaiusSeekers2502_h02_skin4",
+"atlasName": "fg_gaiusSeekers2502_h02_skin4_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -67,8 +67,8 @@
 "transparentIndex": 53
 },
 {
-"name": "fg_gaiusSeekers2502_h02b_skin2",
-"atlasName": "fg_gaiusSeekers2502_h02_skin2_Atlas0",
+"name": "fg_gaiusSeekers2502_h02b_skin4",
+"atlasName": "fg_gaiusSeekers2502_h02_skin4_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -130,8 +130,8 @@
 "transparentIndex": 53
 },
 {
-"name": "fg_gaiusSeekers2502_h02c_skin2",
-"atlasName": "fg_gaiusSeekers2502_h02_skin2_Atlas0",
+"name": "fg_gaiusSeekers2502_h02c_skin4",
+"atlasName": "fg_gaiusSeekers2502_h02_skin4_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
