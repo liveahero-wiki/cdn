@@ -24,7 +24,7 @@ jobs:
       ASSET_RIPPER_VERSION: "0.3.4.0"
       FINISH_INDICATOR: done
       ARTIFACTS_BRANCH: gh-pages
-    runs-on: windows-2019
+    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [22.x]
