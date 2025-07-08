@@ -30,7 +30,14 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
           print(f"::warning file={file_path}::{e}")
           continue
 
-        dest = os.path.join(dest_folder, obj.type.name, data.name)
+        paths = [dest_folder, obj.type.name]
+
+        if hasattr(data, "name"):
+          paths.append(getattr(data, "name"))
+        elif hasattr(data, "m_Name"):
+          paths.append(getattr(data, "m_Name"))
+
+        dest = os.path.join(*paths)
         #print(f"::debug::{dest}")
 
         if obj.type.name == "Sprite":
@@ -53,10 +60,13 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
               print(f"::warning file={file_path}::{e}")
 
         elif obj.type.name == "TextAsset":
-          dest, ext = os.path.splitext(dest)
+          data = obj.read()
+          #print("Text:", dest)
+          if not dest.endswith(".atlas") and not dest.endswith(".skel"):
+            dest, ext = os.path.splitext(dest)
           dest = dest + ".txt"
           with open(dest, "wb") as f:
-            f.write(data.script)
+            f.write(data.m_Script.encode("utf-8", "surrogateescape"))
 
         #elif obj.type.name == "AudioClip":
         #  for name, raw in data.samples.items():
