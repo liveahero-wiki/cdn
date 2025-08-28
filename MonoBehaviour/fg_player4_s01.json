@@ -26,6 +26,30 @@
 2
 ],
 "transparentIndex": 2
+},
+{
+"name": "fg_player4_s01b",
+"atlasName": "fg_player4_s01_Atlas0",
+"width": 640,
+"height": 1024,
+"cellIndexList": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+11,
+2,
+2,
+2,
+2
+],
+"transparentIndex": 2
 }
 ]
 }
