@@ -1,10 +1,10 @@
 {
-"m_Name": "fg_antares_h01_skin2",
+"m_Name": "fg_antaresMain2313th_h01",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_antares_h01_skin2",
+"name": "fg_antaresMain2313th_h01",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
@@ -67,7 +67,7 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_antares_h01b_skin2",
+"name": "fg_antaresMain2313th_h01b",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
@@ -130,7 +130,7 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_antares_h01c_skin2",
+"name": "fg_antaresMain2313th_h01c",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
@@ -193,7 +193,7 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_antares_h01d_skin2",
+"name": "fg_antaresMain2313th_h01d",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
@@ -256,7 +256,7 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_antares_h01e_skin2",
+"name": "fg_antaresMain2313th_h01e",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
@@ -319,7 +319,7 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_antares_h01f_skin2",
+"name": "fg_antaresMain2313th_h01f",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
@@ -382,7 +382,7 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_antares_h01g_skin2",
+"name": "fg_antaresMain2313th_h01g",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
@@ -445,7 +445,7 @@
 "transparentIndex": 0
 },
 {
-"name": "fg_antares_h01h_skin2",
+"name": "fg_antaresMain2313th_h01h",
 "atlasName": "fg_antares_h01_skin2_Atlas0",
 "width": 640,
 "height": 1024,
