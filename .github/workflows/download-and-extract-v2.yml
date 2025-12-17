@@ -135,6 +135,7 @@ jobs:
 
           git add MonoBehaviour\fg_*.json
           git add Texture2D\fg_*.png
+          git add Sprite\tex_pixel*.png
           git add Sprite\icon_*.png
           git add Sprite\item_*.png
           git add Sprite\b_skill*.png
@@ -145,7 +146,6 @@ jobs:
           git add Sprite\ui_banner_info*.jpg
           git add Sprite\ui_banner_event*.jpg
           git add Sprite\skillTree_*.png
-          git add Sprite\tex_*.png
 
           git commit -m "Auto-extract assets to artifacts"
           git push origin HEAD
