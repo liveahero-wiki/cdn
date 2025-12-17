@@ -135,7 +135,7 @@ jobs:
 
           git add MonoBehaviour\fg_*.json
           git add Texture2D\fg_*.png
-          git add Sprite\tex_pixel*.png
+          git add Texture2D\tex_pixel*.png
           git add Sprite\icon_*.png
           git add Sprite\item_*.png
           git add Sprite\b_skill*.png
