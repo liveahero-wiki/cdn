@@ -1,11 +1,11 @@
 {
-"m_Name": "fg_sterioWhiteout2512_h02",
+"m_Name": "fg_sterioWhiteout2512_h02_skin2",
 "cellSize": 128,
 "padding": 3,
 "textureDataList": [
 {
-"name": "fg_sterioWhiteout2512_h02",
-"atlasName": "fg_sterioWhiteout2512_h02_Atlas0",
+"name": "fg_sterioWhiteout2512_h02_skin2",
+"atlasName": "fg_sterioWhiteout2512_h02_skin2_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -62,13 +62,13 @@
 50,
 51,
 52,
-53
+52
 ],
-"transparentIndex": -1
+"transparentIndex": 52
 },
 {
-"name": "fg_sterioWhiteout2512_h02b",
-"atlasName": "fg_sterioWhiteout2512_h02_Atlas0",
+"name": "fg_sterioWhiteout2512_h02b_skin2",
+"atlasName": "fg_sterioWhiteout2512_h02_skin2_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -109,13 +109,13 @@
 34,
 35,
 36,
+53,
+38,
+39,
+40,
+41,
+42,
 54,
-38,
-39,
-40,
-41,
-42,
-55,
 44,
 45,
 46,
@@ -125,13 +125,13 @@
 50,
 51,
 52,
-53
+52
 ],
-"transparentIndex": -1
+"transparentIndex": 52
 },
 {
-"name": "fg_sterioWhiteout2512_h02c",
-"atlasName": "fg_sterioWhiteout2512_h02_Atlas0",
+"name": "fg_sterioWhiteout2512_h02c_skin2",
+"atlasName": "fg_sterioWhiteout2512_h02_skin2_Atlas0",
 "width": 640,
 "height": 1024,
 "cellIndexList": [
@@ -172,13 +172,13 @@
 34,
 35,
 36,
-56,
+55,
 38,
 39,
 40,
 41,
 42,
-57,
+56,
 44,
 45,
 46,
@@ -188,9 +188,9 @@
 50,
 51,
 52,
-53
+52
 ],
-"transparentIndex": -1
+"transparentIndex": 52
 }
 ]
 }
