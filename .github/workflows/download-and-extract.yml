@@ -22,11 +22,11 @@ jobs:
       ARTIFACTS_DIR: artifacts
       FINISH_INDICATOR: done
       ARTIFACTS_BRANCH: gh-pages
-    runs-on: windows-2019
+    runs-on: windows-latest
     strategy:
       matrix:
-        node-version: [16.x]
-        python-version: [3.9]
+        node-version: [24.x]
+        python-version: [3.14]
     steps:
       - uses: actions/checkout@v6
 
@@ -109,20 +109,32 @@ jobs:
         working-directory: GH
         run: |
           Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\* -Destination .
+          md -Force ${env:ARTIFACTS_DIR}\Texture2D\
+          md -Force .\Texture2D\Sign\
+          Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\Texture2D\sign_*.png -Destination .\Texture2D\Sign\
           git config --global user.name ${env:USER_NAME}
           git config --global user.email ${env:USER_EMAIL}
 
           git add MonoBehaviour\fg_*.json
           git add Texture2D\fg_*.png
+          git add Texture2D\tex_pixel*.png
+          git add Texture2D\Sign\sign_*.png
           git add Sprite\icon_*.png
           git add Sprite\item_*.png
           git add Sprite\b_skill*.png
           git add Sprite\status_*.png
           git add Sprite\banner_*.jpg
+          git add Sprite\banner_*.webp
           git add Sprite\ui_frame_*.png
           git add Sprite\ui_icon_*.png
-          git add Sprite\ui_banner_info_*.jpg
+          git add Sprite\ui_banner_info*.jpg
+          git add Sprite\ui_banner_event_questbanner*.jpg
+          git add Sprite\ui_banner_info*.webp
+          git add Sprite\ui_banner_event_questbanner*.webp
           git add Sprite\skillTree_*.png
+
+          git restore --staged Sprite\ui_banner_gacha_*
+
 
           git commit -m "Auto-extract assets to artifacts"
           git push origin HEAD
