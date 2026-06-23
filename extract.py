@@ -11,7 +11,9 @@ print("Encoding:", sys.getdefaultencoding())
 
 CLASSES = ["MonoBehaviour", "Sprite", "TextAsset"]
 
-def unpack_all_assets(src_folder: str, dest_folder: str):
+def unpack_all_assets(src_folder: str, dest_folder: str, includeTexture2D: bool):
+  if includeTexture2D:
+    CLASSES.append("Texture2D")
   for c in CLASSES:
     os.makedirs(os.path.join(dest_folder, c), exist_ok=True)
 
@@ -40,7 +42,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str):
         dest = os.path.join(*paths)
         #print(f"::debug::{dest}")
 
-        if obj.type.name == "Sprite":
+        if obj.type.name in ["Texture2D", "Sprite"]:
           dest, ext = os.path.splitext(dest)
           dest = dest + ".png"
           data.image.save(dest)
@@ -78,6 +80,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument("src", help="asset bundles folder")
   parser.add_argument("dest", help="output folder")
+  parser.add_argument("--texture2d", action='store_true', default=false, help="Include Texture2D") 
 
   args = parser.parse_args()
-  unpack_all_assets(args.src, args.dest)
+  unpack_all_assets(args.src, args.dest, args.texture2d)

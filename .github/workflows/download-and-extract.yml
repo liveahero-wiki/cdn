@@ -61,7 +61,8 @@ jobs:
         if: env.BUNDLE_COUNT != '0'
         run: |
           python -m pip install -r requirements.txt
-          python extract.py ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR}
+          python extract.py ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR} --texture2d
+          (dir -r ${env:ARTIFACTS_DIR}).FullName
 
       - uses: actions/checkout@v6
         if: false
@@ -70,7 +71,7 @@ jobs:
           token: ${{ secrets.BOOK_SECRET }}
           path: ASSETS
           clean: false
-          
+
       - name: Commit bundles
         if: false
         working-directory: ASSETS
