@@ -21,7 +21,7 @@ jobs:
       BUNDLES_DIR: bundles
       ARTIFACTS_DIR: artifacts
       ARTIFACTS_RIPPER_DIR: ripper-output
-      ASSET_RIPPER_VERSION: "0.3.4.0"
+      ASSET_RIPPER_VERSION: "1.3.14"
       FINISH_INDICATOR: done
       ARTIFACTS_BRANCH: gh-pages
     runs-on: windows-latest
