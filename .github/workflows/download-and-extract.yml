@@ -109,7 +109,7 @@ jobs:
         working-directory: GH
         run: |
           Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\* -Destination .
-          md -Force ${env:ARTIFACTS_DIR}\Texture2D\
+          md -Force ..\${env:ARTIFACTS_DIR}\Texture2D\
           md -Force .\Texture2D\Sign\
           Copy-Item -Force -Recurse -Path ..\${env:ARTIFACTS_DIR}\Texture2D\sign_*.png -Destination .\Texture2D\Sign\
           git config --global user.name ${env:USER_NAME}
