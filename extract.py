@@ -4,12 +4,59 @@ import argparse
 import os
 import json
 import sys
+import re
+from pathlib import PureWindowsPath
 
 import UnityPy
 
 print("Encoding:", sys.getdefaultencoding())
 
 CLASSES = ["MonoBehaviour", "Sprite", "TextAsset"]
+
+DRIVE_PATTERN = re.compile(r"^[a-zA-Z]:$")
+
+RESERVED_NAMES = {
+    "CON", "PRN", "AUX", "NUL", "COM1", "COM2", "COM3", "COM4", 
+    "COM5", "COM6", "COM7", "COM8", "COM9", "LPT1", "LPT2", 
+    "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
+}
+
+PROHIBITED_CHARS_PATTERN = re.compile(r'[<>:"|?*]')
+CONTROL_CHARS_PATTERN = re.compile(r'[\x00-\x1f\x7f-\x9f]')
+
+def native_sanitize_windows_path(unsafe_path: str) -> str:
+    """Sanitizes an unsafe string into a valid Windows file path."""
+    path_obj = PureWindowsPath(unsafe_path)
+    sanitized_parts = []
+    
+    # Process each segment of the path individually to preserve the drive configuration
+    for i, part in enumerate(path_obj.parts):
+        # Do not modify Windows drive letters like 'C:' if it's the first part
+        if i == 0 and DRIVE_PATTERN.match(part):
+            sanitized_parts.append(part)
+            continue
+            
+        # 1. Remove Windows prohibited characters: < > : " | ? *
+        cleaned = PROHIBITED_CHARS_PATTERN.sub('', part)
+        
+        # 2. Strip unprintable/control characters
+        cleaned = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', cleaned)
+        
+        # 3. Windows ignores spaces and periods at the end of directory/file names
+        cleaned = cleaned.strip(". ")
+        
+        # 4. Check against Windows reserved device names
+        # If the file base name matches a device name, alter it to make it safe
+        base_name = cleaned.split('.')[0].upper()
+        if base_name in RESERVED_NAMES:
+            cleaned = f"safe_{cleaned}"
+            
+        # Keep the cleaned component if it isn't completely empty
+        if cleaned:
+            sanitized_parts.append(cleaned)
+            
+    # Reconstruct the path using Windows path syntax structure
+    return str(PureWindowsPath(*sanitized_parts))
 
 def unpack_all_assets(src_folder: str, dest_folder: str, includeTexture2D: bool):
   if includeTexture2D:
@@ -40,6 +87,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str, includeTexture2D: bool)
           paths.append(getattr(data, "m_Name"))
 
         dest = os.path.join(*paths)
+        dest = native_sanitize_windows_path(dest)
         #print(f"::debug::{dest}")
 
         if obj.type.name in ["Texture2D", "Sprite"]:
