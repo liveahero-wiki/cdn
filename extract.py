@@ -96,7 +96,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str, includeTexture2D: bool)
           try:
             data.image.save(dest)
           except Exception as e:
-            print(f"::error::image write failed file={file_path}::{e}")
+            print(f"::warning image write failed file={file_path}::{e}")
             continue
 
         elif obj.type.name == "MonoBehaviour":
