@@ -97,7 +97,7 @@ def unpack_all_assets(src_folder: str, dest_folder: str, includeTexture2D: bool)
             data.image.save(dest)
           except Exception as e:
             print(f"::error::image write failed file={file_path}::{e}")
-            raise e
+            continue
 
         elif obj.type.name == "MonoBehaviour":
           dest, ext = os.path.splitext(dest)
