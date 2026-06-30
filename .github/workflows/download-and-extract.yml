@@ -61,7 +61,7 @@ jobs:
         if: env.BUNDLE_COUNT != '0'
         run: |
           python -m pip install -r requirements.txt
-          python extract.py ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR} --texture2d
+          python -u extract.py ${env:BUNDLES_DIR} ${env:ARTIFACTS_DIR} --texture2d
           (dir -r ${env:ARTIFACTS_DIR}).FullName
 
       - uses: actions/checkout@v6

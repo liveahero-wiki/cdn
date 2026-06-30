@@ -129,6 +129,8 @@ def unpack_all_assets(src_folder: str, dest_folder: str, includeTexture2D: bool)
         #      f.write(raw)
 
 if __name__ == '__main__':
+  import faulthandler
+  faulthandler.enable()  # This will dump a traceback even on C-level crashes
   parser = argparse.ArgumentParser()
   parser.add_argument("src", help="asset bundles folder")
   parser.add_argument("dest", help="output folder")
