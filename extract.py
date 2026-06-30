@@ -73,6 +73,12 @@ def unpack_all_assets(src_folder: str, dest_folder: str, includeTexture2D: bool)
         if obj.type.name not in CLASSES:
           continue
 
+        # 1. Skip if it relies on a missing external reference
+        # 2. Check if TypeTree data exists or if it's a known format
+        if obj.type_tree is None and not hasattr(obj, "serialized_type"):
+          print(f"::warning file={file_path} Skipping {obj.path_id}: Missing type tree layout (could cause crash)")
+          continue
+
         try:
           data = obj.read()
         except Exception as e:
