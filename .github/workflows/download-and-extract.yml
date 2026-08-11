@@ -128,6 +128,7 @@ jobs:
           git add Sprite\banner_*.webp
           git add Sprite\ui_frame_*.png
           git add Sprite\ui_icon_*.png
+          git add Sprite\ui_subquest_*.png
           git add Sprite\ui_banner_info*.jpg
           git add Sprite\ui_banner_event_questbanner*.jpg
           git add Sprite\ui_banner_info*.webp
